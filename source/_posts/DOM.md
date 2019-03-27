@@ -7,15 +7,18 @@ tags:
 categories: 
 - 前端学习
 ---
-本文整理了 JavaScript 使用DOM时的一些常用API，用于巩固基础知识，加深对原生 js 的认识
 
-# 基本概念
-DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。
+
+# 什么是DOM
+### DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。
+<!--more-->
 
 浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。
 
 DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。另一方面，JavaScript 也是最常用于 DOM 操作的语言。后面介绍的就是 JavaScript 对 DOM 标准的实现和用法。
-<!--more-->
+
+本文整理了 JavaScript 使用DOM时的一些常用API，用于巩固基础知识，加深对原生 js 的认识
+
 # Node节点类型
 DOM 的最小组成单位叫做节点（Node）。DOM 定义了一个 Node 接口，该接口由 DOM中所有节点类型实现。这个 Node 接口在 JS 中是作为Node类型实现的。
 Node 有一个属性 nodeType 表示 Node 的类型，它是一个整数，其数值分别表示相应的 Node 类型，具体如下：
