@@ -44,7 +44,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
   
 # Home page setting
@@ -84,4 +84,28 @@ deploy:
   type: git
   repo: git@github.com:18437956520/18437956520.github.io.git
 
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true
+  
+  # Fireworks
+fireworks: true
 
+
+live2d:
+      enable: true
+      scriptFrom: local
+      model:
+        scale: 1
+        hHeadPos: 0.5
+        vHeadPos: 0.618
+      display:
+        superSample: 1
+        width: 100
+        height: 200
+        position: left
+        hOffset: 0
+        vOffset: -20
+      react:
+        opacityDefault: 0.8
+        opacityOnHover: 1
