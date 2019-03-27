@@ -11,10 +11,11 @@ categories:
 ### Array 对象是用于构造数组的全局对象，是按次序排列的一组值
 <!--more-->
 #### 创建数组
-***let f1 = ['a','b']***
-***let f2 = new Array('a','b')***
-***f1 === f2***
-
+```
+let f1 = ['a','b']
+let f2 = new Array('a','b')
+f1 === f2
+```
 #### Array 用法
 ![](/images/微信截图_20190327141842.png)
 
