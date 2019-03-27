@@ -15,7 +15,7 @@ DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（D
 浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。
 
 DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。另一方面，JavaScript 也是最常用于 DOM 操作的语言。后面介绍的就是 JavaScript 对 DOM 标准的实现和用法。
-
+<!--more-->
 # Node节点类型
 DOM 的最小组成单位叫做节点（Node）。DOM 定义了一个 Node 接口，该接口由 DOM中所有节点类型实现。这个 Node 接口在 JS 中是作为Node类型实现的。
 Node 有一个属性 nodeType 表示 Node 的类型，它是一个整数，其数值分别表示相应的 Node 类型，具体如下：
@@ -91,7 +91,7 @@ DocumentFragment是所有节点中唯一一个没有对应标记的类型，它�
 
 认识了节点类型之后，将常用的 DOM 操作 API 分类
 
-## 节点创建型API
+## 节点创建型api
 ### createElement
 createElement通过传入指定的一个标签名来创建一个元素，如果传入的标签名是一个未知的，则会创建一个自定义的标签，注意：IE8以下浏览器不支持自定义标签。
 使用如下：
@@ -133,7 +133,7 @@ DocumentFragment不是文档树的一部分，它是保存在内存中的，所�
 （2）cloneNode要注意如果被复制的节点是否包含子节点以及事件绑定等问题
 （3）使用createDocumentFragment来解决添加大量节点时的性能问题
 
-## 页面修改型API
+## 页面修改型api
 前面我们提到创建型api，它们只是创建节点，并没有真正修改到页面内容，而是要调用appendChild来将其添加到文档树中。我在这里将这类会修改到页面内容归为一类。
 修改页面内容的api主要包括：appendChild，insertBefore，removeChild，replaceChild。
 
@@ -163,5 +163,116 @@ refNode表示参照节点，新节点会添加到这个节点之前
 
 这段代码创建了一个新节点，然后添加到child节点之前。
 和appendChild一样，如果插入的节点是页面上的节点，则会移动该节点到指定位置，并且保留其绑定的事件。
+
+### removeChild
+删除指定的子节点并返回
+
+![](/images/微信截图_20190327081353.png)
+
+deletedChild指向被删除节点的引用，它等于node，被删除的节点仍然存在于内存中，可以对其进行下一步操作。
+注意：如果被删除的节点不是其子节点，则程序将会报错。我们可以通过下面的方式来确保可以删除：
+
+![](/images/微信截图_20190327081502.png)
+
+通过节点自己获取节点的父节点，然后将自身删除。
+
+### replaceChild
+replaceChild用于使用一个节点替换另一个节点
+
+![](/images/微信截图_20190327081705.png)
+
+newChild是替换的节点，可以是新的节点，也可以是页面上的节点，如果是页面上的节点，则其将被转移到新的位置
+oldChild是被替换的节点
+
+#### 小结
+页面修改型api主要是这四个接口，要注意几个特点：
+（1）不管是新增还是替换节点，如果新增或替换的节点是原本存在页面上的，则其原来位置的节点将被移除，也就是说同一个节点不能存在于页面的多个位置
+（2）节点本身绑定的事件会不会消失，会一直保留着。
+
+## 节点查询型api
+### document.getElementById
+这个接口很简单，根据元素id返回元素，返回值是Element类型，如果不存在该元素，则返回null。
+使用这个接口有几点要注意：
+（1）元素的Id是大小写敏感的，一定要写对元素的id
+（2）HTML文档中可能存在多个id相同的元素，则返回第一个元素
+（3）只从文档中进行搜索元素，如果创建了一个元素并指定id，但并没有添加到文档中，则这个元素是不会被查找到的
+
+### document.getElementsByTagName
+这个接口根据元素标签名获取元素，返回一个即时的HTMLCollection类型
+
+![](/images/微信截图_20190327082348.png)
+
+### document.getElementsByName
+getElementsByName主要是通过指定的name属性来获取元素，它返回一个即时的NodeList对象。
+使用这个接口主要要注意几点：
+（1）返回对象是一个即时的NodeList，它是随时变化的
+（2）在HTML元素中，并不是所有元素都有name属性，比如div是没有name属性的，但是如果强制设置div的name属性，它也是可以被查找到的
+（3）在IE中，如果id设置成某个值，然后传入getElementsByName的参数值和id值一样，则这个元素是会被找到的，所以最好不好设置同样的值给id和name
+
+### document.getElementsByClassName
+这个api是根据元素的class返回一个即时的HTMLCollection
+这个接口有下面几点要注意：
+（1）返回结果是一个即时的HTMLCollection，会随时根据文档结构变化
+（2）IE9以下浏览器不支持
+（3）如果要获取2个以上classname，可传入多个classname，每个用空格相隔
+
+### document.querySelector和document.querySelectorAll
+这两个api很相似，通过css选择器来查找元素，注意选择器要符合CSS选择器的规则。
+首先来介绍一下document.querySelector。
+document.querySelector返回第一个匹配的元素，如果没有匹配的元素，则返回null。
+注意，由于返回的是第一个匹配的元素，这个api使用的深度优先搜索来获取元素
+
+![](/images/微信截图_20190327082603.png)
+
+document.querySelectorAll的不同之处在于它返回的是所有匹配的元素，而且可以匹配多个选择符
+
+![](/images/微信截图_20190327082751.png)
+
+这段代码通过querySelectorAll，使用id选择器和class选择器选择了两个元素，并依次输出其内容。要注意两点：
+（1）querySelectorAll也是通过深度优先搜索，搜索的元素顺序和选择器的顺序无关
+（2）返回的是一个非即时的NodeList，也就是说结果不会随着文档树的变化而变化
+
+## 节点关系型api
+在html文档中的每个节点之间的关系都可以看成是家谱关系，包含父子关系，兄弟关系等等
+
+### 父关系型api
+parentNode：每个节点都有一个parentNode属性，它表示元素的父节点。Element的父节点可能是Element，Document或DocumentFragment。
+parentElement：返回元素的父元素节点，与parentNode的区别在于，其父节点必须是一个Element，如果不是，则返回null
+
+### 兄弟关系型api
+previousSibling：节点的前一个节点，如果该节点是第一个节点，则为null。注意有可能拿到的节点是文本节点或注释节点，与预期的不符，要进行处理一下。
+previousElementSibling：返回前一个元素节点，前一个节点必须是Element，注意IE9以下浏览器不支持。
+nextSibling：节点的后一个节点，如果该节点是最后一个节点，则为null。注意有可能拿到的节点是文本节点，与预期的不符，要进行处理一下。
+nextElementSibling：返回后一个元素节点，后一个节点必须是Element，注意IE9以下浏览器不支持。
+
+### 子关系型api
+childNodes：返回一个即时的NodeList，表示元素的子节点列表，子节点可能会包含文本节点，注释节点等。
+children：一个即时的HTMLCollection，子节点都是Element，IE9以下浏览器不支持。
+firstNode：第一个子节点
+lastNode：最后一个子节点
+hasChildNodes方法：可以用来判断是否包含子节点。
+
+## 元素属性型api
+### setAttribute
+setAttribute：根据名称和值修改元素的特性
+
+![](/images/微信截图_20190327085000.png)
+
+其中name是特性名，value是特性值。如果元素不包含该特性，则会创建该特性并赋值。
+如果元素本身包含指定的特性名为属性，则可以直接访问属性进行赋值，比如下面两条代码是等价的：
+
+![](/images/微信截图_20190327085036.png)
+
+### getAttribute
+getAttribute返回指定的特性名相应的特性值，如果不存在，则返回null或空字符串
+
+![](/images/微信截图_20190327085124.png)
+
+# 总结
+本文主要总结了原生js中常用的操作DOM的api接口，主要为了复习基础知识。平时开发用多了jQuery等类库，对基础知识的了解可能就渐渐地遗忘，但这些基础知识才是我们立足的根本，只有掌握原生的js，才能真正做好js的开发。
+
+
+
+
 
 
