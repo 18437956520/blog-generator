@@ -89,7 +89,7 @@ passage_end_tag:
   enabled: true
   
   # Fireworks
-fireworks: true
+fireworks: false
 
 
 live2d:

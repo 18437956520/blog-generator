@@ -10,7 +10,7 @@ categories:
 
 
 # 什么是DOM
-### DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。
+## DOM 是 JavaScript 操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。
 <!--more-->
 
 浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。
@@ -94,6 +94,7 @@ DocumentFragment是所有节点中唯一一个没有对应标记的类型，它�
 
 认识了节点类型之后，将常用的 DOM 操作 API 分类
 
+# API
 ## 节点创建型api
 ### createElement
 createElement通过传入指定的一个标签名来创建一个元素，如果传入的标签名是一个未知的，则会创建一个自定义的标签，注意：IE8以下浏览器不支持自定义标签。
