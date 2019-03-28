@@ -272,6 +272,32 @@ getAttribute返回指定的特性名相应的特性值，如果不存在，则�
 
 ![](/images/微信截图_20190327085124.png)
 
+# DOM 自测
+```
+如何获取一个元素的爸爸节点：
+var divParent = div._?_
+// parentNode
+// parentElement
+
+如何检测一个元素是文字还是标签？
+var isElement = div.__?__  === 1
+// nodeType
+
+如何获取一个元素的所有子代标签（标签不包含文本）
+let children = div.____?____
+// children
+
+如何获取一个元素的所有子代节点（节点包括标签和文字）
+let children = div.____?____
+// childNodes
+
+如何获取一个div标签的下一个标签？
+// div.nextSibling 获取的有可能是文字，需要不停访问 nextSibling 直到获取到一个 nodeType 为 1 的节点才行
+
+如何获取一个div标签的所有同级（兄弟）标签？
+// 声明空数组 siblings，遍历 div.parentNode.children，将 div 以外的元素 push 到数组里
+```
+
 # 总结
 本文主要总结了原生js中常用的操作DOM的api接口，主要为了复习基础知识。平时开发用多了jQuery等类库，对基础知识的了解可能就渐渐地遗忘，但这些基础知识才是我们立足的根本，只有掌握原生的js，才能真正做好js的开发。
 
