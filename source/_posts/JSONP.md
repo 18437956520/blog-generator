@@ -8,3 +8,6 @@ categories:
 - 前端学习
 ---
 # JSONP是什么？
+
+**请求方：yyyh.info的前端程序员（浏览器）**
+**响应方：zzzq.info的后端程序员（服务器）**
