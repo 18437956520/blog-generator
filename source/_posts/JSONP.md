@@ -26,3 +26,16 @@ categories:
 callbackName -> callback
 yyy -> 随机数 yyyh12321341242134()
 ```
+
+**jQuery实现**
+```js
+$.ajax({
+    url: "http://zzzq.info:8001/pay",
+    dataType: "jsonp",
+    success: function( response ){
+        if(response === 'success'){
+            amount.innerText = amount.innerText - 1
+        }
+    }
+})
+````
