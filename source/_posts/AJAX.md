@@ -42,4 +42,19 @@ categories:
 ![](/images/微信截图_20190414212907.png)
 
 # 原生js来实现AJAX
+```js
+myButton.addEventListener('click', (e)=>{
+    let request = new XMLHttpRequest()
+    request.open('get', 'http://yyyh.info:8001/xxx')
+    request.send()
+    request.onreadystatechange = ()=>{
+        if(request.readyState === 4){
+            if(request.status >= 200 && request.status < 300){
+                let string = request.responseText
+                let object = window.JSON.parse(string)
+            }
+        }
+    }
+})
+```
 
