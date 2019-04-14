@@ -22,10 +22,24 @@ categories:
 2. 运用`XMLHttpRequset`和`web`服务器进行数据的异步交换
 3. 运用`Javascript`操作`DOM`,实现动态局部刷新
 
-首先来了解一下`HTTP`请求与响应
+## 首先来了解一下`HTTP`请求与响应
 ![](/images/微信截图_20190414212351.png)
 ![](/images/微信截图_20190414212449.png)
 ![](/images/微信截图_20190414212509.png)
 ![](/images/微信截图_20190414212527.png)
 ![](/images/微信截图_20190414212557.png)
+
+## XMLHttpRequset发送请求:
+![](/images/微信截图_20190414212658.png)
+
+## XMLHttpRequset取得响应:
+![](/images/微信截图_20190414212757.png)
+
+## 如何判断请求响应成功了呢?首次我们要知道有这样一个status
+![](/images/微信截图_20190414212830.png)
+
+## 通过监听readyState的状态码,来判断是是否请求成功:
+![](/images/微信截图_20190414212907.png)
+
+# 原生js来实现AJAX
 
