@@ -10,6 +10,7 @@ categories:
 # 文档流
 在CSS里，一个元素的高度是由`其内部文档流元素高度总和`决定的
 文档流（`Normal Flow`）：文档内元素的流动方向
+<!--more-->
 - 内联元素由左往右流动，遇到阻碍就换行继续流
 - 块级元素由上往下流动，每一块占一行
 - 内联元素的高度是由`line-height`决定的，它多少像素，内联元素的高度就是多少
@@ -58,8 +59,16 @@ categories:
 ```
 # 盒模型
 在一个文档中，每一个元素都被抽象成一个盒子，每一个盒子又包括四部分(从内到外):内容(content)，内填充(padding)，边框(border)，外边距(margin)，这就是`盒模型`
+![盒模型示意图](/images/v2-55c9ea515b2499c4b70d132ce5554734_hd.png)
 - content box：立体盒子的核心
 - padding box：内边距区域padding area 延伸到包围padding的边框。如果内容区域content area设置了背景、颜色或者图片，这些样式将会延伸到padding上(当然我们可以通过background-clip设置作用区域)
-- border box：由border和4条border edge组成。若border宽度设置为0，则border edge与padding edage重叠
-- margin box：由margin和4条margin edge组成。若margin宽度设置为0，则margin edge与border edage重叠
+- border box：由border和4条border edge组成。若border宽度设置为0，则border edge与padding edge重叠
+- margin box：由margin和4条margin edge组成。若margin宽度设置为0，则margin edge与border edge重叠
+# 1:1 div
+```css
+div{
+  border: 1px solid red;
+  padding-top: 100%;
+}
+```
 
