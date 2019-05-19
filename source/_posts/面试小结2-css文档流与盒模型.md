@@ -41,20 +41,19 @@ categories:
 ## 单行
 ```css
 {   
-    white-space: nowrap; /*超出的空白区域不换行*/
-    overflow: hidden; /*超出隐藏*/
-    text-overflow: ellipsis; /*文本超出显示省略号*/
-
+  white-space: nowrap; /*超出的空白区域不换行*/
+  overflow: hidden; /*超出隐藏*/
+  text-overflow: ellipsis; /*文本超出显示省略号*/
 }
 ```
 ## 多行
 ```css
 {
-    display: -webkit-box; /*将对象作为弹性伸缩盒子模型显示*/
-    -webkit-line-clamp: 2; /*用来限制在一个块元素显示的文本的行数*/
-    -webkit-box-orient: vertical; /*设置或检索伸缩盒对象的子元素的排列方式 */
-    overflow: hidden; /*超出隐藏*/
-    text-overflow: ellipsis; /*用来多行文本的情况下，用省略号“…”隐藏超出范围的文本*/
+  display: -webkit-box; /*将对象作为弹性伸缩盒子模型显示*/
+  -webkit-line-clamp: 2; /*用来限制在一个块元素显示的文本的行数*/
+  -webkit-box-orient: vertical; /*设置或检索伸缩盒对象的子元素的排列式 */
+  overflow: hidden; /*超出隐藏*/
+  text-overflow: ellipsis; /*用来多行文本的情况下，用省略号“…”隐藏超范围的文本*/
 }
 ```
 # 盒模型
