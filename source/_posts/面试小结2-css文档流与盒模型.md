@@ -88,5 +88,5 @@ span::after{
 }
 ```
 # 页面显示两个空格
-`&nbsp;&nbsp;`
+`&nbsp;&nbsp;`(Non-Breaking Space)
 
