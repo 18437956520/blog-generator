@@ -36,4 +36,30 @@ categories:
 - 父元素一定，子元素为多行内联元素：设置父元素的 display:table-cell 或 inline-block，再设置 vertical-align:middle
 - 块状元素：设置行高 line-height，加上下 padding
 - flex布局 align-items: center
+# 文字溢出省略
+## 单行
+```css
+{   
+    white-space: nowrap; /*超出的空白区域不换行*/
+    overflow: hidden; /*超出隐藏*/
+    text-overflow: ellipsis; /*文本超出显示省略号*/
+
+}
+```
+## 多行
+```css
+{
+    display: -webkit-box; /*将对象作为弹性伸缩盒子模型显示*/
+    -webkit-line-clamp: 2; /*用来限制在一个块元素显示的文本的行数*/
+    -webkit-box-orient: vertical; /*设置或检索伸缩盒对象的子元素的排列方式 */
+    overflow: hidden; /*超出隐藏*/
+    text-overflow: ellipsis; /*用来多行文本的情况下，用省略号“…”隐藏超出范围的文本*/
+}
+```
+# 盒模型
+在一个文档中，每一个元素都被抽象成一个盒子，每一个盒子又包括四部分(从内到外):内容(content)，内填充(padding)，边框(border)，外边距(margin)，这就是`盒模型`
+- content box：立体盒子的核心
+- padding box：内边距区域padding area 延伸到包围padding的边框。如果内容区域content area设置了背景、颜色或者图片，这些样式将会延伸到padding上(当然我们可以通过background-clip设置作用区域)
+- border box：由border和4条border edge组成。若border宽度设置为0，则border edge与padding edage重叠
+- margin box：由margin和4条margin edge组成。若margin宽度设置为0，则margin edge与border edage重叠
 
