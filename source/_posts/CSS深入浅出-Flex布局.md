@@ -115,5 +115,5 @@ categories:
 `align-self`属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`
 该属性可能取`6`个值，除了`auto`，其他都与`align-items`属性完全一致
 
-# 小游戏
+# 小游戏 
 [救救青蛙](http://flexboxfroggy.com/#zh-cn)
