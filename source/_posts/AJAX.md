@@ -1,5 +1,5 @@
 ---
-title: AJAx
+title: AJAX
 date: 2019-04-14 21:08:50
 tags:
 - 前端
