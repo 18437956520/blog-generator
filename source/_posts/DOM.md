@@ -31,7 +31,7 @@ Node 有一个属性 nodeType 表示 Node 的类型，它是一个整数，其�
 | Node.COMMENT_NODE               | 8 |
 | Node.DOCUMENT_NODE              | 9 |
 | Node.DOCUMENT_TYPE_NODE         | 10 |
-| Node.DOCUMENT_FRAGMENT_NODE     | 11|
+| Node.DOCUMENT_FRAGMENT_NODE     | 11 |
 
 | Node类型(已弃用)                 | nodeType数值 |
 | :-------------------------------|:-:|
