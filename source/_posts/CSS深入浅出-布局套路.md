@@ -10,6 +10,7 @@ categories:
 # 浮动布局(float)
 1. 给子类加 `float:left`
 2. 给父类加 `class="clearfix"`
+<!--more-->
 ```css
 .clearfix::after{
     content: '';
